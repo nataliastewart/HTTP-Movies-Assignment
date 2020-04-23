@@ -34,9 +34,17 @@ const App = () => {
         <MovieList movies={movieList} />
       </Route>
 
-      <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
-      </Route>
+      <Route
+        path="/movies/:id"
+        render={(props) => (
+          <Movie
+            addToSavedList={addToSavedList}
+            {...props}
+            items={items}
+            setItems={setItems}
+          />
+        )}
+      />
       <Route
         path="/update-movie/:id"
         render={() => <UpdateForm items={items} setItems={setItems} />}

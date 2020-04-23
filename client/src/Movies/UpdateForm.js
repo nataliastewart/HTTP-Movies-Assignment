@@ -13,14 +13,16 @@ const UpdateForm = (props) => {
   const { push } = useHistory();
   const [item, setItem] = useState(initialItem);
   const { id } = useParams();
+
   useEffect(() => {
     axios
-      .get(`http://localhost:3333/itemById/${id}`)
+      .get(`http://localhost:5000/api/movies/${id}`)
       .then((res) => {
+        console.log("RES_DATA", res.data);
         // res.data
         setItem(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("UPDATE-FORM ERROR", err));
   }, [id]);
 
   const changeHandler = (ev) => {
@@ -40,7 +42,7 @@ const UpdateForm = (props) => {
     e.preventDefault();
     // make a PUT request to edit the item
     axios
-      .put(`http://localhost:3333/movies/${id}`, item)
+      .put(`http://localhost:5000/api/movies/${id}`, item)
       .then((res) => {
         // res.data
         props.setItems(res.data);

@@ -6,7 +6,7 @@ const initialItem = {
   title: "",
   director: "",
   metascore: "",
-  stars: [""],
+  stars: [],
 };
 
 const UpdateForm = (props) => {
@@ -59,9 +59,9 @@ const UpdateForm = (props) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name=" title"
+          name="title"
           onChange={changeHandler}
-          placeholder=" title"
+          placeholder="title"
           value={item.title}
         />
         <div className="baseline" />
